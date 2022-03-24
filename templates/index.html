@@ -1,32 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-        {% if request.user.is_authenticated %}
-        <h6>Hello, {{request.user.username}}</h6>
-        <a href="{% url 'logout' %}"> <button> Выйти </button></a>
-        {% else %}
-        <a href="{% url 'sign_in' %}"> <button> Войти </button></a>
-        {% endif %}
-    </ul>
+{% extends 'base.html'%}
 
 
-    {% for category in categories %}
-        <a href=""> {{category.name}}</a>
-    {% endfor %}
 
-    {% for post in posts %}
-        <h1>{{ post.title }}</h1>
-        <h3>Категория: {{post.category}}</h3>
-        <img src="{{post.image.url}}" alt="" width="250">
-        <p>{{ post.text }}</p>
-        <p> {{post.author}} - Дата создание: {{ post.created }}</p> 
-    {% endfor %}
-</body>
-</html>
+
+{% block content %}
+<ul>
+    {% if request.user.is_authenticated %}
+    <h6>Hello, {{request.user.username}}</h6>
+    <a href="{% url 'logout' %}"> <button> Выйти </button></a>
+    {% else %}
+    <a href="{% url 'sign_in' %}"> <button> Войти </button></a>
+    <a href="{% url 'register' %}"> <button>Зарегистрироваться</button></a>
+    {% endif %}
+</ul>
+
+
+{% for category in categories %}
+    <a href=""> {{category.name}}</a>
+{% endfor %}
+
+{% for post in posts %}
+    <h1>{{ post.title }}</h1>
+    <h3>Категория: {{post.category}}</h3>
+    <img src="{{post.image.url}}" alt="" width="250">
+    <p>{{ post.text }}</p>
+    <p> {{post.author}} - Дата создание: {{ post.created }}</p> 
+{% endfor %}
+
+{% endblock %}
