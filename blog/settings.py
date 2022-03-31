@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'post',
     'accounts',
+    'tours',
 ]
 
 MIDDLEWARE = [
