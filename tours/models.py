@@ -37,7 +37,18 @@ class RegularTour(models.Model):
     status = models.CharField(
         "Статус", 
         choices=TOUR_STATUSES, 
-        default=TOUR_STATUS_WAITING
+        default=TOUR_STATUS_WAITING,
+        max_length=10
         )
 
+    class Meta:
+        verbose_name = "Регуларный тур"
+        verbose_name_plural = "Регуларный туры"
+        ordering = ['-start']
+
+
+    def __str__(self):
+        return f"{self.tour.title-self.start}"
+
+        
 
