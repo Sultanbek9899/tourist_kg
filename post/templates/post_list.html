@@ -21,7 +21,7 @@
         {% for post in posts %}
         <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry">
-            <a href="blog-single.html" class="block-20" style="background-image: url('{{ post.image.url }}');">
+            <a href="{% url 'post_detail' post.id %}" class="block-20" style="background-image: url('{{ post.image.url }}');">
             </a>
             <div class="text mt-3 float-right d-block">
                 <div class="d-flex align-items-center mb-4 topp">
@@ -33,7 +33,7 @@
                         <span class="mos">{{ post.created|date:'F'}}</span>
                     </div>
               </div>
-              <h3 class="heading"><a href="#">{{ post.title }}</a></h3>
+              <h3 class="heading"><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
               <p>{{ post.text|truncatechars:100 }}</p>
             </div>
           </div>
