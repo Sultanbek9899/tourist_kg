@@ -41,6 +41,20 @@
 	          <li class="nav-item"><a href="" class="nav-link">О нас</a></li>
 	          <li class="nav-item"><a href="{% url 'tour_list' %}" class="nav-link">Туры</a></li>
 	          <li class="nav-item"><a href="{% url 'post_list' %}" class="nav-link">Блог</a></li>
+            <li class="nav-item">
+              <div class="nav-link dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                  Категории
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  {% for category in categories %}
+                    <a class="dropdown-item" href="{% url 'category_posts' category.slug %}">
+                      {{category.name}}
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </li>
 	          <li class="nav-item"><a href="" class="nav-link">Контакты</a></li>
 	          <li class="nav-item cta"><a href="#" class="nav-link">Бронируй сейчас</a></li>
 	        </ul>
