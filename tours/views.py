@@ -3,6 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 from tours.models import Tour, RegularTour
 from django.http import Http404
+from tours.forms import TourBookingForm
+
 def get_tour_list(request):
     tours = Tour.objects.filter(is_active=True)
     context = {
@@ -16,7 +18,10 @@ def get_tour_detail(request, pk):
         tour = Tour.objects.get(id=pk)
     except Tour.DoesNotExist: 
         raise Http404
+
+    form = TourBookingForm()
     context ={
-        "tour":tour
+        "tour":tour,
+        "form":form
     }
     return render(request, 'tour_detail.html', context)
