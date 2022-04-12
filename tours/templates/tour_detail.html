@@ -34,12 +34,14 @@
             {% for regular_tour in tour.regulartour_set.all %}
                 <a href="#" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Начало: {{regular_tour.start}}- Конец:{{regular_tour.end}}</h5>
+                    <h5 class="mb-1">Начало: {{regular_tour.start|date:"d.m.Y H:i"}}</h5>
+                    <h5 class="mb-1">Конец:{{regular_tour.end|date:"d.m.Y H:i"}} </h5>
                     <small>Количество мест: {{ regular_tour.places_count }}</small>
                 </div>
                 <p class="mb-1">Some placeholder content in a paragraph.</p>
-                <button type="button" class="btn btn-warning">Warning</button>
-                <small>And some small print.</small>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#tour_modal">
+                  Забронировать
+                </button>
                 </a>
             {% empty %}
                 <h3 style="border:1px solid black;">
@@ -52,5 +54,31 @@
       </div>
     </div>
   </section> <!-- .section -->
+
+  <div class="modal fade" id="tour_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Recipient:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
 {% endblock %}
