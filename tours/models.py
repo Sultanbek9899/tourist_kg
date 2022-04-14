@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 # Create your models here.
 class Tour(models.Model):
     title = models.CharField("Название",max_length=100)
@@ -48,7 +49,7 @@ class RegularTour(models.Model):
 
 
     def __str__(self):
-        return f"{self.tour.title}-{self.start}"
+        return f"{self.tour.title}-{self.start.date()}"
 
         
 class TourBooking(models.Model):
