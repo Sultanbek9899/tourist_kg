@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h3 class="register-done">
+            Ваша регистрация прошла успеша!
+        </h3>
+        <h4>
+            <a href="{% url 'index' %}">
+                Перейти на главную страницу
+            </a>
+        </h4>
+
+    </div>
+{% endblock %}

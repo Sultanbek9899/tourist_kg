@@ -34,7 +34,7 @@ def sign_in(request):
 
 def logout_user(request):
     logout(request)
-    return HttpResponse("Вы успешно вышли!")
+    return redirect("index")
 
 
 def register(request):
@@ -44,6 +44,7 @@ def register(request):
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
+            login(request, new_user) # логинится после регистрации
             return render(request, 'register_done.html', {'new_user':new_user})
     else:
         user_form = UserRegisterForm()

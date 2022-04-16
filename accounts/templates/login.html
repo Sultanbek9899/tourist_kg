@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block style %}
+        
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+
+
 {% block content %}
 <div class="container">
     <form style="margin: 6rem 0;" action="#" method="post">
