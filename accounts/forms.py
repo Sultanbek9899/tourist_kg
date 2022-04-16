@@ -8,6 +8,21 @@ from django.contrib.auth.models import User
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+    
+    class Meta:
+        widgets = {
+            'username': forms.TextInput(
+            attrs={
+                "class":"floatLabel",
+                "placeholder":"Имя пользователя"
+            }),
+            'password': forms.PasswordInput(
+                attrs={
+                    "class":"floatLabel",
+                    "placeholder":"Пароль"
+                }
+            )
+        }
 
 
 class UserRegisterForm(forms.ModelForm):

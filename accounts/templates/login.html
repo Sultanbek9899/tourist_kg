@@ -1,18 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход</title>
-</head>
-<body>
-    <h2>Вход на сайт</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{form}}
-        <button type="submit"> Войти </button>
+{% extends 'base.html' %}
 
+{% block content %}
+<div class="container">
+    <form style="margin: 6rem 0;" action="#" method="post">
+    <h2>Войти</h2>
+        <p>
+            <label for="id_username" class="floatLabel">Имя пользователя:</label>
+            {{form.username}}
+        </p>
+        <p>
+            <label for="id_password" class="floatLabel">Пароль:</label>
+            {{form.password}}
+            {% csrf_token %}
+        </p>
+		<p>
+			<input type="submit" value="Войти" id="submit">
+		</p>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}

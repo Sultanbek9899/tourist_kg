@@ -1,5 +1,6 @@
+from contextlib import redirect_stderr
 from distutils.log import Log
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 # Create your views here.
 from django.http import HttpResponse
@@ -20,7 +21,7 @@ def sign_in(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse("Вы успешно вошли!")
+                    return redirect('index')
                 else:
                     return HttpResponse("Аккаунт неактивирован")
             else:
